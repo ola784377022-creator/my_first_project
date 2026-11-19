@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Royal Table</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+     #offers div:hover {
+  transform: translateY(-10px);
+}
+
+    html {
+  scroll-behavior: smooth;
+}
+    body {
+      background-color: #1e1e1e;
+      color: #fff;
+    }
+
+   /* Header ثابت */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  position: fixed; /* يجعل الهيدر ثابت */
+  top: 0;
+  width: 100%;
+  background-color: #1e1e1e; /* نفس لون الجسم أو يمكنك وضع خلفية شفافة */
+  z-index: 1000; /* ليبقى فوق باقي العناصر */
+}
+
+/* إضافة padding أعلى الجسم لتجنب اختفاء المحتوى خلف الهيدر */
+body {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding-top: 70px; /* تقريبًا ارتفاع الهيدر */
+}
+
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 28px;
+      color: #FFD700;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #FFD700;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 50px;
+      background-color: #2a2a2a;
+      position: relative;
+    }
+
+    .hero img {
+      width: 45%;
+      border-radius: 15px;
+    }
+
+    .hero-text {
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 50px;
+      color: #FFD700;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      line-height: 1.5;
+      color: #f0f0f0;
+    }
+
+    .btn-order {
+      padding: 15px 40px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #FFD700;
+      color: #1e1e1e;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-right: 10px;
+    }
+
+    .btn-order:hover {
+      background-color: #e6c200;
+    }
+
+    /* Menu Section */
+    .menu-section {
+      background-color: #fdfdfd; /* أبيض فاتح */
+      color: #FFD700; /* أصفر */
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .menu-title {
+      font-family: 'Pacifico', cursive;
+      font-size: 40px;
+      margin-bottom: 50px;
+    }
+
+    .menu-items {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .menu-item {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      width: 200px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      color: #333;
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .menu-item img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .menu-item h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #FFD700;
+    }
+
+    .menu-item p {
+      font-size: 14px;
+      line-height: 1.4;
+      color: #555;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .btn-menu-item {
+      padding: 10px 25px;
+      font-size: 14px;
+      font-weight: bold;
+      background-color: #FFD700;
+      color: #1e1e1e;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-menu-item:hover {
+      background-color: #e6c200;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 50px 20px;
+      }
+      .hero img {
+        width: 80%;
+        margin-bottom: 30px;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      nav ul li {
+        margin: 10px;
+      }
+      .menu-items {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">The Royal Table</div>
+    <nav>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li> 
+        <li><a href="#most">Most Ordered</a></li>
+        <li><a href="#offers">Offers</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </nav>
+  </header>
+<section class="hero" style="display: flex; align-items: center; justify-content: space-between; min-height: 90vh; padding: 80px 50px; background-color: #2a2a2a; position: relative; overflow: hidden;">
+  <!-- صورة الوجبة -->
+  <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" 
+       alt="Dish" 
+       style="width: 50%; border-radius: 15px; object-fit: cover;">
+
+  <!-- نص الHero -->
+  <div class="hero-text" style="max-width: 500px;">
+    <h1 style="font-family: 'Pacifico', cursive; font-size: 60px; color: #FFD700; margin-bottom: 20px;">Today's Dish</h1>
+    <p style="font-size: 20px; margin-bottom: 30px; line-height: 1.5; color: #f0f0f0;">
+      Lamb meat slaughtered in the Islamic way, fried in olive oil with the finest types of vegetables, to get a meal that is supreme in deliciousness and benefit.
+    </p>
+    <button class="btn-order" style="padding: 15px 40px; font-size: 16px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px; transition: 0.3s;">Order Now</button>
+    <button class="btn-order" style="padding: 15px 40px; font-size: 16px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s;">Contact Us</button>
+  </div>
+
+  <!-- عناصر زخرفية -->
+  <div class="decor decor1"></div>
+  <div class="decor decor2"></div>
+  <div class="decor decor3"></div>
+  <div class="decor decor2"></div>
+</section>
+
+
+ 
+<!-- About Section with Large Circular Image and Smaller Height -->
+<section class="about-section" id="about" style="display: flex; align-items: center; justify-content: center; min-height: 95vh; padding: 60px; background-color: #1e1e1e; color: #fff;">
+  <div style="flex: 1; padding-right: 40px;">
+    <h2 style="font-family: 'Pacifico', cursive; font-size: 50px; color: #FFD700; margin-bottom: 30px;">About The Royal Table</h2>
+    <p style="font-size: 20px; line-height: 1.8;">
+      The Royal Table هو مكان يجمع بين النكهة الفاخرة والطعام الصحي. نحن نؤمن بأن الوجبة المثالية تجمع بين الطعم الرائع والفائدة الغذائية، لذلك نختار المكونات بعناية ونحضر كل طبق بشغف وحب. استمتع معنا بتجربة طعام لا تُنسى، مليئة بالمذاق الرائع والصحة في كل لقمة.
+    </p>
+  </div>
+  <div style="flex: 1; display: flex; justify-content: center;">
+    <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" 
+         alt="About Image" 
+         style="width: 500px; height: 500px; border-radius: 50%; object-fit: cover; border: 5px solid #FFD700;">
+  </div>
+</section>
+
+
+  <!-- Menu Section Enlarged -->
+<section class="menu-section" id="menu" style="background-color: #fdfdfd; min-height: 95vh; color: #FFD700; text-align: center; padding: 100px 20px;">
+  <h2 class="menu-title" style="font-family: 'Pacifico', cursive; font-size: 42px; margin-bottom: 60px;">Our Menu</h2>
+  <div class="menu-items" style="display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-bottom: 50px;">
+    <div class="menu-item" style="background-color: #fff; border-radius: 15px; padding: 30px; width: 220px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #333; transition: transform 0.3s; display: flex; flex-direction: column; align-items: center;">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Appetizers" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      <h3 style="font-size: 22px; margin-bottom: 12px; color: #FFD700;">Appetizers</h3>
+      <p style="font-size: 15px; line-height: 1.5; color: #555; margin-bottom: 20px; text-align: center;">Delicious starters to begin your meal with flavor and freshness.</p>
+      <button class="btn-menu-item" style="padding: 12px 28px; font-size: 15px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s;">View Appetizers</button>
+    </div>
+
+    <div class="menu-item" style="background-color: #fff; border-radius: 15px; padding: 30px; width: 220px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #333; transition: transform 0.3s; display: flex; flex-direction: column; align-items: center;">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Main Course" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      <h3 style="font-size: 22px; margin-bottom: 12px; color: #FFD700;">Main Course</h3>
+      <p style="font-size: 15px; line-height: 1.5; color: #555; margin-bottom: 20px; text-align: center;">Hearty dishes prepared with the finest ingredients for your delight.</p>
+      <button class="btn-menu-item" style="padding: 12px 28px; font-size: 15px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s;">View Main Courses</button>
+    </div>
+
+    <div class="menu-item" style="background-color: #fff; border-radius: 15px; padding: 30px; width: 220px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #333; transition: transform 0.3s; display: flex; flex-direction: column; align-items: center;">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Desserts" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      <h3 style="font-size: 22px; margin-bottom: 12px; color: #FFD700;">Desserts</h3>
+      <p style="font-size: 15px; line-height: 1.5; color: #555; margin-bottom: 20px; text-align: center;">Sweet treats to finish your meal on a perfect note.</p>
+      <button class="btn-menu-item" style="padding: 12px 28px; font-size: 15px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s;">View Desserts</button>
+    </div>
+
+    <div class="menu-item" style="background-color: #fff; border-radius: 15px; padding: 30px; width: 220px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: #333; transition: transform 0.3s; display: flex; flex-direction: column; align-items: center;">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=200" alt="Beverages" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin-bottom: 20px;">
+      <h3 style="font-size: 22px; margin-bottom: 12px; color: #FFD700;">Beverages</h3>
+      <p style="font-size: 15px; line-height: 1.5; color: #555; margin-bottom: 20px; text-align: center;">Refreshing drinks to complement your meal perfectly.</p>
+      <button class="btn-menu-item" style="padding: 12px 28px; font-size: 15px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 5px; cursor: pointer; transition: 0.3s;">View Beverages</button>
+    </div>
+  </div>
+</section>
+<!-- Most Ordered Section with All Categories -->
+<section id="most" style="background-color: #1e1e1e; color: #fff; min-height: 95vh; text-align: center; padding: 80px 20px;">
+    <br>
+    <br>
+    <br>
+     <br>
+    <br>
+     <br>
+    <br>
+  <h2 style="font-family: 'Pacifico', cursive; font-size: 50px; color: #FFD700; margin-bottom: 50px;">Most Ordered</h2>
+
+  <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+
+    <!-- Appetizers -->
+    <div style="width: 220px; background-color: #2a2a2a; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" 
+           alt="Appetizers" 
+           style="width: 100%; border-radius: 15px; margin-bottom: 15px; object-fit: cover;">
+      <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Appetizers</h3>
+      <!-- Popularity Bar -->
+      <div style="background-color: #555; border-radius: 10px; height: 15px; overflow: hidden;">
+        <div style="width: 90%; background-color: #FFD700; height: 100%; border-radius: 10px;"></div>
+      </div>
+    </div>
+
+    <!-- Main Course -->
+    <div style="width: 220px; background-color: #2a2a2a; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" 
+           alt="Main Course" 
+           style="width: 100%; border-radius: 15px; margin-bottom: 15px; object-fit: cover;">
+      <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Main Course</h3>
+      <div style="background-color: #555; border-radius: 10px; height: 15px; overflow: hidden;">
+        <div style="width: 80%; background-color: #FFD700; height: 100%; border-radius: 10px;"></div>
+      </div>
+    </div>
+
+    <!-- Desserts -->
+    <div style="width: 220px; background-color: #2a2a2a; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" 
+           alt="Desserts" 
+           style="width: 100%; border-radius: 15px; margin-bottom: 15px; object-fit: cover;">
+      <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Desserts</h3>
+      <div style="background-color: #555; border-radius: 10px; height: 15px; overflow: hidden;">
+        <div style="width: 95%; background-color: #FFD700; height: 100%; border-radius: 10px;"></div>
+      </div>
+    </div>
+
+    <!-- Beverages -->
+    <div style="width: 220px; background-color: #2a2a2a; border-radius: 15px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+      <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" 
+           alt="Beverages" 
+           style="width: 100%; border-radius: 15px; margin-bottom: 15px; object-fit: cover;">
+      <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Beverages</h3>
+      <div style="background-color: #555; border-radius: 10px; height: 15px; overflow: hidden;">
+        <div style="width: 70%; background-color: #FFD700; height: 100%; border-radius: 10px;"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Offers Section Redesigned 4x2 -->
+<section id="offers" style="background: linear-gradient(135deg, #1e1e1e, #ffffff); color: #fff; min-height: 100vh; text-align: center; padding: 80px 20px;">
+  <h2 style="font-family: 'Pacifico', cursive; font-size: 50px; color: #FFD700; margin-bottom: 60px;">Special Offers</h2>
+
+
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; justify-items: center;">
+
+    <!-- Offer 1 -->
+    <div style="background: #2a2a2a; border-radius: 20px; overflow: hidden; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.3s;">
+      <div style="background: #FFD700; padding: 15px;">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+             alt="Offer 1"
+             style="width: 100%; border-radius: 15px; object-fit: cover;">
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Weekend Special</h3>
+        <p style="color: #fff; font-size: 14px; margin-bottom: 15px;">20% off on all main courses every weekend.</p>
+        <button style="width: 100%; padding: 12px 0; font-size: 14px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">Grab Offer</button>
+      </div>
+    </div>
+
+    <!-- Offer 2 -->
+    <div style="background: #2a2a2a; border-radius: 20px; overflow: hidden; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.3s;">
+      <div style="background: #FFD700; padding: 15px;">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+             alt="Offer 2"
+             style="width: 100%; border-radius: 15px; object-fit: cover;">
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Family Combo</h3>
+        <p style="color: #fff; font-size: 14px; margin-bottom: 15px;">Full meal for four with dessert included at a discounted price.</p>
+        <button style="width: 100%; padding: 12px 0; font-size: 14px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">Grab Offer</button>
+      </div>
+    </div>
+
+    <!-- Offer 3 -->
+    <div style="background: #2a2a2a; border-radius: 20px; overflow: hidden; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.3s;">
+      <div style="background: #FFD700; padding: 15px;">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+             alt="Offer 3"
+             style="width: 100%; border-radius: 15px; object-fit: cover;">
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Happy Hour</h3>
+        <p style="color: #fff; font-size: 14px; margin-bottom: 15px;">Buy one beverage, get one free from 4 PM to 6 PM.</p>
+        <button style="width: 100%; padding: 12px 0; font-size: 14px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">Grab Offer</button>
+      </div>
+    </div>
+
+    <!-- Offer 4 -->
+    <div style="background: #2a2a2a; border-radius: 20px; overflow: hidden; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.3s;">
+      <div style="background: #FFD700; padding: 15px;">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+             alt="Offer 4"
+             style="width: 100%; border-radius: 15px; object-fit: cover;">
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Chef's Choice</h3>
+        <p style="color: #fff; font-size: 14px; margin-bottom: 15px;">Special selection by our chef every week.</p>
+        <button style="width: 100%; padding: 12px 0; font-size: 14px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">Grab Offer</button>
+      </div>
+    </div>
+
+    <!-- الصف الثاني: 4 عروض إضافية -->
+    <!-- Offer 5 -->
+    <div style="background: #2a2a2a; border-radius: 20px; overflow: hidden; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.3s;">
+      <div style="background: #FFD700; padding: 15px;">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+             alt="Offer 5"
+             style="width: 100%; border-radius: 15px; object-fit: cover;">
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Dessert Delight</h3>
+        <p style="color: #fff; font-size: 14px; margin-bottom: 15px;">Indulge in sweet treats at special prices.</p>
+        <button style="width: 100%; padding: 12px 0; font-size: 14px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">Grab Offer</button>
+      </div>
+    </div>
+
+    <!-- Offer 6 -->
+    <div style="background: #2a2a2a; border-radius: 20px; overflow: hidden; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.3s;">
+      <div style="background: #FFD700; padding: 15px;">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+             alt="Offer 6"
+             style="width: 100%; border-radius: 15px; object-fit: cover;">
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Lunch Combo</h3>
+        <p style="color: #fff; font-size: 14px; margin-bottom: 15px;">Affordable lunch sets for quick bites.</p>
+        <button style="width: 100%; padding: 12px 0; font-size: 14px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">Grab Offer</button>
+      </div>
+    </div>
+
+    <!-- Offer 7 -->
+    <div style="background: #2a2a2a; border-radius: 20px; overflow: hidden; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.3s;">
+      <div style="background: #FFD700; padding: 15px;">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+             alt="Offer 7"
+             style="width: 100%; border-radius: 15px; object-fit: cover;">
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Breakfast Special</h3>
+        <p style="color: #fff; font-size: 14px; margin-bottom: 15px;">Start your day with a delicious morning combo.</p>
+        <button style="width: 100%; padding: 12px 0; font-size: 14px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">Grab Offer</button>
+      </div>
+    </div>
+
+    <!-- Offer 8 -->
+    <div style="background: #2a2a2a; border-radius: 20px; overflow: hidden; width: 220px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.3s;">
+      <div style="background: #FFD700; padding: 15px;">
+        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400"
+             alt="Offer 8"
+             style="width: 100%; border-radius: 15px; object-fit: cover;">
+      </div>
+      <div style="padding: 20px; text-align: center;">
+        <h3 style="color: #FFD700; font-size: 20px; margin-bottom: 10px;">Evening Treats</h3>
+        <p style="color: #fff; font-size: 14px; margin-bottom: 15px;">Perfect snacks and drinks for your evening relaxation.</p>
+        <button style="width: 100%; padding: 12px 0; font-size: 14px; font-weight: bold; background-color: #FFD700; color: #1e1e1e; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s;">Grab Offer</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- Gallery Section -->
+<section id="gallery" style="background-color: #1e1e1e; color: #fff; min-height: 100vh; padding: 80px 20px; text-align: center;">
+  <h2 style="font-family: 'Pacifico', cursive; font-size: 50px; color: #FFD700; margin-bottom: 60px;">Gallery</h2>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; justify-items: center;">
+
+    <!-- Image 1: المطعم فارغ -->
+    <div style="position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: transform 0.3s;">
+      <img src="ChatGPT Image Dec 13, 2025, 08_09_45 PM.png" alt="Empty Restaurant" style="width:100%; height: 250px; object-fit: cover;">
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: rgba(0,0,0,0.5); color: #FFD700; font-weight: bold; font-size: 18px;">Empty Restaurant</div>
+    </div>
+
+    <!-- Image 2: المطعم مع الزبائن -->
+    <div style="position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: transform 0.3s;">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Restaurant with Customers" style="width:100%; height: 250px; object-fit: cover;">
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: rgba(0,0,0,0.5); color: #FFD700; font-weight: bold; font-size: 18px;">With Customers</div>
+    </div>
+
+    <!-- Image 3: العمال في اجتماع -->
+    <div style="position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: transform 0.3s;">
+      <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Staff Meeting" style="width:100%; height: 250px; object-fit: cover;">
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: rgba(0,0,0,0.5); color: #FFD700; font-weight: bold; font-size: 18px;">Staff Meeting</div>
+    </div>
+
+    <!-- Image 4: صورة إضافية عصرية -->
+    <div style="position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); transition: transform 0.3s;">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600" alt="Restaurant Atmosphere" style="width:100%; height: 250px; object-fit: cover;">
+      <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 15px; background: rgba(0,0,0,0.5); color: #FFD700; font-weight: bold; font-size: 18px;">Restaurant Atmosphere</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CSS إضافي للتحريك عند المرور بالفأرة -->
+<style>
+#gallery div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+}
+</style>
+
+
+
+ 
+  
+</body>
+</html>
